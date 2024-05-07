@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Tire Size Calculator</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Add your styling here (optional) */
-  </style>
+  <link rel="stylesheet" href="style.css">  </style>
 </head>
 <body>
   <h1>Car Tire Size Calculator</h1>
@@ -30,19 +28,26 @@
       event.preventDefault();
 
       const tireSizeInput = document.getElementById('tire-size').value;
-      const wheelSizeInput = document.getElementById('wheel-size').value;
+      const wheelSizeInput = parseFloat(document.getElementById('wheel-size').value); // Ensure wheel size is a number
+
+      // Check for valid input format (e.g., 225/50R17)
+      const regex = /^\d+\/\d+R\d+$/;
+      if (!regex.test(tireSizeInput)) {
+        alert("Invalid tire size format. Please use format like '225/50R17'.");
+        return;
+      }
 
       // Parse the tire size data
       const [width, aspectRatio, rimDiameter] = tireSizeInput.split('/');
 
       // Calculate the tire sidewall height in millimeters
-      const sidewallHeight = aspectRatio / 100 * width;
+      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width); // Ensure width is a number
 
       // Calculate the tire diameter in inches
-      const tireDiameterInches = (sidewallHeight * 2) / 25.4 + parseFloat(rimDiameter);
+      const tireDiameterInches = (sidewallHeight * 2) / 25.4 + wheelSizeInput;
 
       // Calculate the tire diameter in millimeters
-      const tireDiameterMM = sidewallHeight * 2 + parseFloat(rimDiameter) * 25.4;
+      const tireDiameterMM = sidewallHeight * 2 + wheelSizeInput * 25.4;
 
       // Display the results
       resultsDiv.innerHTML = `
