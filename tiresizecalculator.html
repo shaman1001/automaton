@@ -71,7 +71,10 @@
       `;
     });
 
-    function calculateTireDiameter(tireSize, wheelSize) {
-      const [width, aspectRatio, rimDiameter] = tireSize.split('/');
-      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
-      const diameter = (sidewallHeight * 2) /
+function calculateTireDiameter(tireSize, wheelSize) {
+  const [width, aspectRatio, rimDiameter] = tireSize.split('/');
+  const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
+  const diameter = (sidewallHeight * 2) / 25.4 + wheelSize; // Convert sidewall height from mm to inches and add wheel size
+  const diameterMM = sidewallHeight * 2 + wheelSize * 25.4; // Diameter in millimeters
+  return [diameter, diameterMM];
+}
