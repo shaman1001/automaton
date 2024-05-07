@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Tire Size Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add your styling here (optional) */
+  </style>
+</head>
+<body>
+  <h1>Car Tire Size Calculator</h1>
+  <p>Enter your tire size and wheel size to calculate the diameter in inches and millimeters.</p>
+  <form id="tire-size-form">
+    <label for="tire-size">Tire Size (e.g., 225/50R17):</label>
+    <input type="text" id="tire-size" name="tire-size" required>
+    <br>
+    <label for="wheel-size">Wheel Size (inches):</label>
+    <input type="number" id="wheel-size" name="wheel-size" required>
+    <br>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="results"></div>
+  <script>
+    const form = document.getElementById('tire-size-form');
+    const resultsDiv = document.getElementById('results');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const tireSizeInput = document.getElementById('tire-size').value;
+      const wheelSizeInput = document.getElementById('wheel-size').value;
+
+      // Parse the tire size data
+      const [width, aspectRatio, rimDiameter] = tireSizeInput.split('/');
+
+      // Calculate the tire sidewall height in millimeters
+      const sidewallHeight = aspectRatio / 100 * width;
+
+      // Calculate the tire diameter in inches
+      const tireDiameterInches = (sidewallHeight * 2) / 25.4 + parseFloat(rimDiameter);
+
+      // Calculate the tire diameter in millimeters
+      const tireDiameterMM = sidewallHeight * 2 + parseFloat(rimDiameter) * 25.4;
+
+      // Display the results
+      resultsDiv.innerHTML = `
+        <p>Tire Size: ${tireSizeInput}</p>
+        <p>Wheel Size: ${wheelSizeInput} inches</p>
+        <p>Tire Diameter (inches): ${tireDiameterInches.toFixed(2)}</p>
+        <p>Tire Diameter (millimeters): ${tireDiameterMM.toFixed(2)}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
