@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Tire Size Calculator</title>
+  <title>Car Tire Size Calculator V0.7</title>
   
   <link rel="stylesheet" href="style.css"> 
 </head>
@@ -25,16 +25,14 @@
     <label for="wheel-size-2">Wheel Size (inches):</label>
     <input type="number" id="wheel-size-2" name="wheel-size-2" required>
     <br>
-    <button type="submit">Compare</button>
+    <button type="button" onclick="compareTires()">Compare</button>
   </form>
   <div id="results"></div>
   <script>
     const form = document.getElementById('tire-size-form');
     const resultsDiv = document.getElementById('results');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
-
+    function compareTires() {
       const tireSize1Input = document.getElementById('tire-size-1').value;
       const wheelSize1Input = parseFloat(document.getElementById('wheel-size-1').value);
       const tireSize2Input = document.getElementById('tire-size-2').value;
@@ -69,8 +67,10 @@
         <h2>Comparison</h2>
         <p>Percentage Change in Diameter: <span class="math-inline">\{diameterChange\.toFixed\(2\)\}%  \(</span>{diameterChange > 0 ? 'Increase' : 'Decrease'})</p>
       `;
-    });
+    }
 
     function calculateTireDiameter(tireSize, wheelSize) {
       const [width, aspectRatio, rimDiameter] = tireSize.split('/');
-      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width
+      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
+      const diameter
+
