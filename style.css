@@ -1,0 +1,36 @@
+/* Basic Styles */
+body {
+  font-family: Arial, sans-serif;  /* Sets a fallback font */
+  margin: 20px;  /* Adds some spacing around the content */
+}
+
+/* Headings */
+h1, h2, h3 {
+  margin: 1.5em 0;  /* Adds space before and after headings */
+}
+
+h1 {
+  font-size: 2em;  /* Makes H1 headings slightly larger */
+}
+
+/* Links */
+a {
+  color: #007bff;  /* Sets link color to blue */
+  text-decoration: none;  /* Removes underline from links */
+}
+
+a:hover {
+  color: #0056b3;  /* Changes link color on hover */
+  text-decoration: underline;  /* Adds underline on hover */
+}
+
+/* Images */
+img {
+  max-width: 100%;  /* Scales images to fit container */
+  height: auto;  /* Maintains image aspect ratio */
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.5;  /* Improves readability with line spacing */
+}
