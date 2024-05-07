@@ -1,21 +1,61 @@
 window.onload = function() {
   const form = document.getElementById('tire-size-form');
   const resultsDiv = document.getElementById('results');
-  const calculateButton = document.getElementById('calculate-button');
 
   function populateDropdowns() {
-    // ... (code to populate dropdown menus remains the same) ...
+    const tireWidthSelect1 = document.getElementById('tire-width-1');
+    const aspectRatioSelect1 = document.getElementById('aspect-ratio-1');
+    const rimSizeSelect1 = document.getElementById('rim-size-1');
+
+    const tireWidthSelect2 = document.getElementById('tire-width-2');
+    const aspectRatioSelect2 = document.getElementById('aspect-ratio-2');
+    const rimSizeSelect2 = document.getElementById('rim-size-2');
+
+    // Tire width options (205 to 330 in steps of 5)
+    for (let width = 205; width <= 330; width += 5) {
+      const widthOption1 = document.createElement('option');
+      widthOption1.value = width;
+      widthOption1.text = `${width} mm`;
+      tireWidthSelect1.appendChild(widthOption1);
+
+      const widthOption2 = document.createElement('option');
+      widthOption2.value = width;
+      widthOption2.text = `${width} mm`;
+      tireWidthSelect2.appendChild(widthOption2);
+    }
+
+    // Aspect ratio options (35 to 85 in steps of 5)
+    for (let ratio = 35; ratio <= 85; ratio += 5) {
+      const ratioOption1 = document.createElement('option');
+      ratioOption1.value = ratio;
+      ratioOption1.text = `${ratio}%`;
+      aspectRatioSelect1.appendChild(ratioOption1);
+
+      const ratioOption2 = document.createElement('option');
+      ratioOption2.value = ratio;
+      ratioOption2.text = `${ratio}%`;
+      aspectRatioSelect2.appendChild(ratioOption2);
+    }
+
+    // Rim size options (13 to 22)
+    for (let rim = 13; rim <= 22; rim++) {
+      const rimOption1 = document.createElement('option');
+      rimOption1.value = rim;
+      rimOption1.text = `${rim} inches`;
+      rimSizeSelect1.appendChild(rimOption1);
+
+      const rimOption2 = document.createElement('option');
+      rimOption2.value = rim;
+      rimOption2.text = `${rim} inches`;
+      rimSizeSelect2.appendChild(rimOption2);
+    }
   }
 
   populateDropdowns(); // Call the function to populate dropdowns on load
 
-  // Remove event listener for form submission (since we have a separate button)
-  // form.addEventListener('submit', function(event) {
-  //   event.preventDefault(); // Prevent default form submission (not needed here)
-  //   // ... (previous form submission code) ...
-  // });
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-  calculateButton.addEventListener('click', function() {
     // Get values from dropdown menus
     const tireWidth1 = parseFloat(document.getElementById('tire-width-1').value);
     const aspectRatio1 = parseFloat(document.getElementById('aspect-ratio-1').value);
@@ -25,6 +65,6 @@ window.onload = function() {
     const aspectRatio2 = parseFloat(document.getElementById('aspect-ratio-2').value);
     const rimSize2 = parseFloat(document.getElementById('rim-size-2').value);
 
-    // ... (code to calculate diameters and display results remains the same) ...
+    // (rest of the code to calculate diameters and display results remains the same)
   });
 };
