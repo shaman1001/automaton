@@ -33,7 +33,7 @@
     const resultsDiv = document.getElementById('results');
 
     form.addEventListener('submit', function(event) {
-      event.preventDefault();
+      event.preventDefault(); // Prevent default form submission
 
       const tireSize1Input = document.getElementById('tire-size-1').value;
       const wheelSize1Input = parseFloat(document.getElementById('wheel-size-1').value);
@@ -73,5 +73,4 @@
 
     function calculateTireDiameter(tireSize, wheelSize) {
       const [width, aspectRatio, rimDiameter] = tireSize.split('/');
-      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
-      
+      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width
