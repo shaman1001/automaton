@@ -4,77 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Tire Size Calculator</title>
-  
-  <link rel="stylesheet" href="style.css"> 
+  <style>
+    /* Add your styling here (optional) */
+  </style>
 </head>
 <body>
-  <h1>Car Tire Size Calculator v0.79</h1>
+  <h1>Car Tire Size Calculator v0.8</h1>
   <p>Enter your tire sizes and wheel sizes to compare diameters and see the percentage change.</p>
   <form id="tire-size-form">
     <h2>Tire 1</h2>
-    <label for="tire-size-1">Tire Size (e.g., 225/50R17):</label>
-    <input type="text" id="tire-size-1" name="tire-size-1" required>
+    <label for="tire-width-1">Tire Width (mm):</label>
+    <select id="tire-width-1" name="tire-width-1" required>
+      <option value="">Select Width</option>
+      <?php for ($width = 205; $width <= 330; $width += 5) { ?>
+        <option value="<?php echo $width; ?>"><?php echo $width; ?> mm</option>
+      <?php } ?>
+    </select>
     <br>
-    <label for="wheel-size-1">Wheel Size (inches):</label>
-    <input type="number" id="wheel-size-1" name="wheel-size-1" required>
+    <label for="aspect-ratio-1">Aspect Ratio (%):</label>
+    <select id="aspect-ratio-1" name="aspect-ratio-1" required>
+      <option value="">Select Aspect Ratio</option>
+      <?php for ($ratio = 40; $ratio <= 85; $ratio += 5) { ?>
+        <option value="<?php echo $ratio; ?>"><?php echo $ratio; ?>%</option>
+      <?php } ?>
+    </select>
     <br>
+    <label for="rim-size-1">Rim Size (inches):</label>
+    <select id="rim-size-1" name="rim-size-1" required>
+      <option value="">Select Rim Size</option>
+      <?php for ($rim = 13; $rim <= 22; $rim += 0.5) { ?>
+        <option value="<?php echo $rim; ?>"><?php echo $rim; ?> inches</option>
+      <?php } ?>
+    </select>
+    <br>
+
     <h2>Tire 2</h2>
-    <label for="tire-size-2">Tire Size (e.g., 225/50R17):</label>
-    <input type="text" id="tire-size-2" name="tire-size-2" required>
+    <label for="tire-width-2">Tire Width (mm):</label>
+    <select id="tire-width-2" name="tire-width-2" required>
+      <option value="">Select Width</option>
+      </select>
     <br>
-    <label for="wheel-size-2">Wheel Size (inches):</label>
-    <input type="number" id="wheel-size-2" name="wheel-size-2" required>
+    <label for="aspect-ratio-2">Aspect Ratio (%):</label>
+    <select id="aspect-ratio-2" name="aspect-ratio-2" required>
+      <option value="">Select Aspect Ratio</option>
+      </select>
+    <br>
+    <label for="rim-size-2">Rim Size (inches):</label>
+    <select id="rim-size-2" name="rim-size-2" required>
+      <option value="">Select Rim Size</option>
+      </select>
     <br>
     <button type="submit">Compare</button>
   </form>
   <div id="results"></div>
   <script>
     const form = document.getElementById('tire-size-form');
-    const resultsDiv = document.getElementById('results');
+const resultsDiv = document.getElementById('results');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent default form submission
 
-      const tireSize1Input = document.getElementById('tire-size-1').value;
-      const wheelSize1Input = parseFloat(document.getElementById('wheel-size-1').value);
-      const tireSize2Input = document.getElementById('tire-size-2').value;
-      const wheelSize2Input = parseFloat(document.getElementById('wheel-size-2').value);
+  // Get values from dropdown menus
+  const tireWidth1 = parseFloat(document.getElementById('tire-width-1').value);
+  const aspectRatio1 = parseFloat(document.getElementById('aspect-ratio-1').value);
+  const rimSize1 = parseFloat(document.getElementById('rim-size-1').value);
 
-      // Validate input formats
-      const regex = /^\d+\/\d+R\d+$/;
-      if (!regex.test(tireSize1Input) || !regex.test(tireSize2Input)) {
-        alert("Invalid tire size format. Please use format like '225/50R17'.");
-        return;
-      }
-
-      // Calculate diameters for both tires
-      const [diameter1, diameter1MM] = calculateTireDiameter(tireSize1Input, wheelSize1Input);
-      const [diameter2, diameter2MM] = calculateTireDiameter(tireSize2Input, wheelSize2Input);
-
-      // Calculate percentage change
-      const diameterChange = ((diameter2 - diameter1) / diameter1) * 100;
-
-      // Display results
-      resultsDiv.innerHTML = `
-        <h2>Tire 1</h2>
-        <p>Tire Size: ${tireSize1Input}</p>
-        <p>Wheel Size: ${wheelSize1Input} inches</p>
-        <p>Diameter (inches): ${diameter1.toFixed(2)}</p>
-        <p>Diameter (millimeters): ${diameter1MM.toFixed(2)}</p>
-        <h2>Tire 2</h2>
-        <p>Tire Size: ${tireSize2Input}</p>
-        <p>Wheel Size: ${wheelSize2Input} inches</p>
-        <p>Diameter (inches): ${diameter2.toFixed(2)}</p>
-        <p>Diameter (millimeters): ${diameter2MM.toFixed(2)}</p>
-        <h2>Comparison</h2>
-        <p>Percentage Change in Diameter: <span class="math-inline">\{diameterChange\.toFixed\(2\)\}%  \(</span>{diameterChange > 0 ? 'Increase' : 'Decrease'})</p>
-      `;
-    });
-
-function calculateTireDiameter(tireSize, wheelSize) {
-  const [width, aspectRatio, rimDiameter] = tireSize.split('/');
-  const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
-  const diameter = (sidewallHeight * 2) / 25.4 + wheelSize; // Convert sidewall height from mm to inches and add wheel size
-  const diameterMM = sidewallHeight * 2 + wheelSize * 25.4; // Diameter in millimeters
-  return [diameter, diameterMM];
-}
+  const tireWidth2 = parseFloat(document.getElementById('tire-width-2').value);
+  const aspect
+  </script>
+</body>
+</html>
