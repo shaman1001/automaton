@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  <h1>Car Tire Size Calculator v0.75</h1>
+  <h1>Car Tire Size Calculator v0.78</h1>
   <p>Enter your tire sizes and wheel sizes to compare diameters and see the percentage change.</p>
   <form id="tire-size-form">
     <h2>Tire 1</h2>
@@ -40,15 +40,38 @@
       const tireSize2Input = document.getElementById('tire-size-2').value;
       const wheelSize2Input = parseFloat(document.getElementById('wheel-size-2').value);
 
-      // Rest of your code for validation and calculations...
+      // Validate input formats
+      const regex = /^\d+\/\d+R\d+$/;
+      if (!regex.test(tireSize1Input) || !regex.test(tireSize2Input)) {
+        alert("Invalid tire size format. Please use format like '225/50R17'.");
+        return;
+      }
 
-      // Display results after calculations
-      resultsDiv.innerHTML = `... (your results HTML here)`;
+      // Calculate diameters for both tires
+      const [diameter1, diameter1MM] = calculateTireDiameter(tireSize1Input, wheelSize1Input);
+      const [diameter2, diameter2MM] = calculateTireDiameter(tireSize2Input, wheelSize2Input);
+
+      // Calculate percentage change
+      const diameterChange = ((diameter2 - diameter1) / diameter1) * 100;
+
+      // Display results
+      resultsDiv.innerHTML = `
+        <h2>Tire 1</h2>
+        <p>Tire Size: ${tireSize1Input}</p>
+        <p>Wheel Size: ${wheelSize1Input} inches</p>
+        <p>Diameter (inches): ${diameter1.toFixed(2)}</p>
+        <p>Diameter (millimeters): ${diameter1MM.toFixed(2)}</p>
+        <h2>Tire 2</h2>
+        <p>Tire Size: ${tireSize2Input}</p>
+        <p>Wheel Size: ${wheelSize2Input} inches</p>
+        <p>Diameter (inches): ${diameter2.toFixed(2)}</p>
+        <p>Diameter (millimeters): ${diameter2MM.toFixed(2)}</p>
+        <h2>Comparison</h2>
+        <p>Percentage Change in Diameter: <span class="math-inline">\{diameterChange\.toFixed\(2\)\}%  \(</span>{diameterChange > 0 ? 'Increase' : 'Decrease'})</p>
+      `;
     });
 
     function calculateTireDiameter(tireSize, wheelSize) {
-      // Your diameter calculation logic here...
-    }
-  </script>
-</body>
-</html>
+      const [width, aspectRatio, rimDiameter] = tireSize.split('/');
+      const sidewallHeight = parseFloat(aspectRatio) / 100 * parseFloat(width);
+      const diameter = (sidewallHeight * 2) /
