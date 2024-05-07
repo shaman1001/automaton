@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Car Tire Size Calculator v0.92</h1>
+  <h1>Car Tire Size Calculator v0.93</h1>
   <p>Enter your tire sizes and wheel sizes to compare diameters and see the percentage change.</p>
   <form id="tire-size-form">
     <h2>Tire 1</h2>
@@ -31,9 +31,12 @@
     <label for="rim-size-2">Rim Size (inches):</label>
     <select id="rim-size-2" name="rim-size-2" required></select>
     <br>
-    <button type="submit">Compare</button>
+    <form id="tire-size-form">
+  <button type="submit">Submit</button> <button type="button" id="calculate-button">Calculate Results</button>
+</form>
   </form>
   <div id="results"></div>
+  
   <script src="ts-script.js"></script>
 </body>
 </html>
