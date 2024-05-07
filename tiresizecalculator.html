@@ -3,84 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Tire Size Calculator</title>
-  <style>
-    /* Add your styling here (optional) */
-  </style>
+  <title>Car Tire Size Calculator v0.9</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Car Tire Size Calculator v0.82</h1>
+  <h1>Car Tire Size Calculator</h1>
   <p>Enter your tire sizes and wheel sizes to compare diameters and see the percentage change.</p>
   <form id="tire-size-form">
     <h2>Tire 1</h2>
     <label for="tire-width-1">Tire Width (mm):</label>
-    <select id="tire-width-1" name="tire-width-1" required>
-      <option value="">Select Width</option>
-    </select>
+    <select id="tire-width-1" name="tire-width-1" required></select>
     <br>
     <label for="aspect-ratio-1">Aspect Ratio (%):</label>
-    <select id="aspect-ratio-1" name="aspect-ratio-1" required>
-      <option value="">Select Aspect Ratio</option>
-    </select>
+    <select id="aspect-ratio-1" name="aspect-ratio-1" required></select>
     <br>
     <label for="rim-size-1">Rim Size (inches):</label>
-    <select id="rim-size-1" name="rim-size-1" required>
-      <option value="">Select Rim Size</option>
-    </select>
+    <select id="rim-size-1" name="rim-size-1" required></select>
     <br>
 
     <h2>Tire 2</h2>
     <label for="tire-width-2">Tire Width (mm):</label>
-    <select id="tire-width-2" name="tire-width-2" required>
-      <option value="">Select Width</option>
-    </select>
+    <select id="tire-width-2" name="tire-width-2" required></select>
     <br>
     <label for="aspect-ratio-2">Aspect Ratio (%):</label>
-    <select id="aspect-ratio-2" name="aspect-ratio-2" required>
-      <option value="">Select Aspect Ratio</option>
-    </select>
+    <select id="aspect-ratio-2" name="aspect-ratio-2" required></select>
     <br>
     <label for="rim-size-2">Rim Size (inches):</label>
-    <select id="rim-size-2" name="rim-size-2" required>
-      <option value="">Select Rim Size</option>
-    </select>
+    <select id="rim-size-2" name="rim-size-2" required></select>
     <br>
     <button type="submit">Compare</button>
   </form>
   <div id="results"></div>
-  <script>
-const form = document.getElementById('tire-size-form');
-const resultsDiv = document.getElementById('results');
-
-// Function to populate dropdown menus on page load
-function populateDropdowns() {
-  const tireWidthSelect1 = document.getElementById('tire-width-1');
-  const aspectRatioSelect1 = document.getElementById('aspect-ratio-1');
-  const rimSizeSelect1 = document.getElementById('rim-size-1');
-
-  const tireWidthSelect2 = document.getElementById('tire-width-2');
-  const aspectRatioSelect2 = document.getElementById('aspect-ratio-2');
-  const rimSizeSelect2 = document.getElementById('rim-size-2');
-
-  // Tire width options (205 to 330 in steps of 5)
-  for (let width = 205; width <= 330; width += 5) {
-    const widthOption1 = document.createElement('option');
-    widthOption1.value = width;
-    widthOption1.text = `${width} mm`;
-    tireWidthSelect1.appendChild(widthOption1);
-
-    const widthOption2 = document.createElement('option');
-    widthOption2.value = width;
-    widthOption2.text = `${width} mm`;
-    tireWidthSelect2.appendChild(widthOption2);
-  }
-
-  // Aspect ratio options (40 to 85 in steps of 5)
-  for (let ratio = 40; ratio <= 85; ratio += 5) {
-    const ratioOption1 = document.createElement('option');
-    ratioOption1.value = ratio;
-    ratioOption1.text = `${ratio}%`;
-    aspectRatioSelect1.appendChild
-  </script>
+  <script src="ts-script.js"></script>
 </body>
 </html>
