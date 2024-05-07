@@ -2,11 +2,7 @@ window.onload = function() {
   const form = document.getElementById('tire-size-form');
   const resultsDiv = document.getElementById('results');
 
-  function populateDropdowns() {
-    // ... (code to populate dropdown menus remains the same) ...
-  }
-
-  populateDropdowns(); // Call the function to populate dropdowns on load
+  function populateDropdowns(); // Call the function to populate dropdowns on load
 
   form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
