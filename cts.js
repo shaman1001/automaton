@@ -18,11 +18,8 @@ function calculate() {
                                "<p>Percentage Difference: " + percentageDifference.toFixed(2) + "%</p>";
 }
 
-
-
 function calculateDiameter(width, aspectRatio, rim) {
     // Tire diameter calculation in inches
     var sidewallHeight = (width * aspectRatio / 100) / 25.4; // Convert aspect ratio to fraction and divide by 25.4 to convert mm to inches
     return sidewallHeight * 2 + rim; // Multiply by 2 for two sidewalls
 }
-
