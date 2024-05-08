@@ -13,10 +13,13 @@ function calculate() {
     var percentageDifference = ((tire2Diameter - tire1Diameter) / tire1Diameter) * 100;
 
     var resultElement = document.getElementById("result");
-    resultElement.innerText = "Percentage Difference: " + percentageDifference.toFixed(2) + "%";
+    resultElement.innerHTML = "Tire 1 Diameter: " + tire1Diameter.toFixed(2) + " inches<br>" +
+                               "Tire 2 Diameter: " + tire2Diameter.toFixed(2) + " inches<br>" +
+                               "Percentage Difference: " + percentageDifference.toFixed(2) + "%";
 }
 
 function calculateDiameter(width, height, rim) {
-    // Calculation logic for tire diameter
-    return (width * height / 2540) + (rim * 2.54);
+    // Tire diameter calculation in inches
+    var tireHeightInches = (width * height / 2540);
+    return tireHeightInches + rim * 25.4;
 }
