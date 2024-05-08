@@ -1,10 +1,10 @@
 function calculate() {
     var tire1Width = parseInt(document.getElementById("tire1Width").value);
-    var tire1AspectRatio = parseInt(document.getElementById("tire1AspectRatio").value);
+    var tire1AspectRatio = parseInt(document.getElementById("tire1Height").value); // Updated ID to "tire1Height"
     var tire1Rim = parseInt(document.getElementById("tire1Rim").value);
 
     var tire2Width = parseInt(document.getElementById("tire2Width").value);
-    var tire2AspectRatio = parseInt(document.getElementById("tire2AspectRatio").value);
+    var tire2AspectRatio = parseInt(document.getElementById("tire2Height").value); // Updated ID to "tire2Height"
     var tire2Rim = parseInt(document.getElementById("tire2Rim").value);
 
     var tire1Diameter = calculateDiameter(tire1Width, tire1AspectRatio, tire1Rim);
@@ -17,6 +17,7 @@ function calculate() {
                                "<p>Tire 2 Diameter: " + tire2Diameter.toFixed(2) + " inches</p>" +
                                "<p>Percentage Difference: " + percentageDifference.toFixed(2) + "%</p>";
 }
+
 
 function calculateDiameter(width, aspectRatio, rim) {
     // Tire diameter calculation in inches
