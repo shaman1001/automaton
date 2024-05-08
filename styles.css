@@ -60,14 +60,20 @@ select {
 }
 
 .outer-tire {
+    width: 200px; /* Example width */
+    height: 200px; /* Example height */
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .inner-tire {
-    position: absolute;
+    width: 90%; /* Example width */
+    height: 90%; /* Example height */
     background-color: black;
+    border-radius: 50%;
 }
 
