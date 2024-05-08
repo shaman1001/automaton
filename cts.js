@@ -42,24 +42,31 @@ function createTireVisualization(width, aspectRatio, rim, label) {
     var tireVisualization = document.createElement("div");
     tireVisualization.className = "tire-visualization";
 
-    // Create tire inner element
-    var tireInner = document.createElement("div");
-    tireInner.className = "tire-inner";
-    tireVisualization.appendChild(tireInner);
+    // Create outer tire element
+    var outerTire = document.createElement("div");
+    outerTire.className = "outer-tire";
+    outerTire.style.width = width + "px";
+    outerTire.style.height = width * aspectRatio / 100 + "px";
+    outerTire.style.border = "2px solid black";
+    outerTire.style.borderRadius = "50%";
+    outerTire.style.marginRight = "20px";
+    tireVisualization.appendChild(outerTire);
+
+    // Create inner tire element
+    var innerTire = document.createElement("div");
+    innerTire.className = "inner-tire";
+    innerTire.style.width = (width - 10) + "px"; // Adjust size to create tread
+    innerTire.style.height = (width * aspectRatio / 100 - 10) + "px"; // Adjust size to create tread
+    innerTire.style.backgroundColor = "black";
+    innerTire.style.borderRadius = "50%";
+    outerTire.appendChild(innerTire);
 
     // Create label for the tire visualization
     var tireLabel = document.createElement("div");
     tireLabel.textContent = label;
     tireLabel.style.textAlign = "center";
-    tireLabel.style.marginBottom = "5px";
-
-    // Create paragraph for displaying tire dimensions
-    var dimensionsParagraph = document.createElement("p");
-    dimensionsParagraph.textContent = "Width: " + width + "mm, Aspect Ratio: " + aspectRatio + "%, Rim Size: " + rim + " inches";
-    dimensionsParagraph.style.fontSize = "12px";
-
+    tireLabel.style.marginTop = "10px"; // Adjust spacing
     tireVisualization.appendChild(tireLabel);
-    tireVisualization.appendChild(dimensionsParagraph);
 
     return tireVisualization;
 }
