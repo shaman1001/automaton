@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tire Diameter Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tire Diameter Calculator 0.1</h1>
+        <div>
+            <h2>Tire 1</h2>
+            <label for="tire1Width">Width:</label>
+            <input type="number" id="tire1Width"><br>
+            <label for="tire1Height">Height:</label>
+            <input type="number" id="tire1Height"><br>
+            <label for="tire1Rim">Rim Size:</label>
+            <input type="number" id="tire1Rim">
+        </div>
+        <div>
+            <h2>Tire 2</h2>
+            <label for="tire2Width">Width:</label>
+            <input type="number" id="tire2Width"><br>
+            <label for="tire2Height">Height:</label>
+            <input type="number" id="tire2Height"><br>
+            <label for="tire2Rim">Rim Size:</label>
+            <input type="number" id="tire2Rim">
+        </div>
+        <button onclick="calculate()">Calculate</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
