@@ -51,21 +51,23 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-/* Add styles for tire visualizations */
-.tire-visualizations {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
 
+/* Add styles for tire visualizations */
 .tire-visualization {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
-
-#result {
-    margin-top: 20px;
+.outer-tire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+.inner-tire {
+    position: absolute;
+    background-color: black;
+}
+
