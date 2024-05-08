@@ -42,17 +42,10 @@ function createTireVisualization(width, aspectRatio, rim, label) {
     var tireVisualization = document.createElement("div");
     tireVisualization.className = "tire-visualization";
 
-    // Calculate tire dimensions
-    var tireWidth = width;
-    var tireHeight = width * aspectRatio / 100;
-    var totalDiameter = tireHeight * 2 + rim * 25.4; // Convert rim size to mm
-
-    // Set tire visualization styles
-    tireVisualization.style.width = tireWidth + "px";
-    tireVisualization.style.height = tireHeight + "px";
-    tireVisualization.style.border = "2px solid black";
-    tireVisualization.style.borderRadius = "50%";
-    tireVisualization.style.marginRight = "20px";
+    // Create tire inner element
+    var tireInner = document.createElement("div");
+    tireInner.className = "tire-inner";
+    tireVisualization.appendChild(tireInner);
 
     // Create label for the tire visualization
     var tireLabel = document.createElement("div");
