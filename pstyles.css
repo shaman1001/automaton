@@ -64,6 +64,103 @@ footer {
     bottom: 0;
     width: 100%;
 }
+/* styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu-bar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-bar nav ul li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.menu-bar nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.menu-bar nav ul li a:hover, .dropdown:hover .dropbtn {
+    background-color: #575757;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.parallax {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
 
 #camera-section {
     min-height: 100vh;
@@ -82,31 +179,3 @@ footer {
     padding: 10px 20px;
     font-size: 16px;
 }
-JavaScript for Camera AccessAdd JavaScript to handle camera access:javascriptCopy code/* scripts.js */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-const video = document.getElementById('video');
-const startCameraButton = document.getElementById('start-camera');
-
-startCameraButton.addEventListener('click', () =&gt; {
-    if (navigator.mediaDevices &amp;&amp; navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream =&gt; {
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(err =&gt; {
-                console.error("Error accessing camera: ", err);
-            });
-    } else {
-        alert('Your browser does not support accessing the camera.');
-    }
-});
