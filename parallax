@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="menu-bar">
+            <h1>My Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="#section1">Home</a></li>
+                    <li><a href="#section2">About</a></li>
+                    <li><a href="#section3">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="section1" class="parallax" style="background-image: url('image1.jpg');">
+        <div class="content">
+            <h2>Welcome to My Website</h2>
+            <p>Introduction text goes here.</p>
+        </div>
+    </section>
+
+    <section id="section2" class="parallax" style="background-image: url('image2.jpg');">
+        <div class="content">
+            <h2>About Us</h2>
+            <p>About us text goes here.</p>
+        </div>
+    </section>
+
+    <section id="section3" class="parallax" style="background-image: url('image3.jpg');">
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Contact information goes here.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
