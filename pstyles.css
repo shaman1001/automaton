@@ -64,3 +64,49 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#camera-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+#camera-section video {
+    margin: 20px 0;
+}
+
+#camera-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+JavaScript for Camera AccessAdd JavaScript to handle camera access:javascriptCopy code/* scripts.js */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+const video = document.getElementById('video');
+const startCameraButton = document.getElementById('start-camera');
+
+startCameraButton.addEventListener('click', () =&gt; {
+    if (navigator.mediaDevices &amp;&amp; navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream =&gt; {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(err =&gt; {
+                console.error("Error accessing camera: ", err);
+            });
+    } else {
+        alert('Your browser does not support accessing the camera.');
+    }
+});
