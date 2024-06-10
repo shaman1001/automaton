@@ -13,6 +13,10 @@ function calculateDeck() {
     const deckSize = width * length;
     document.getElementById('deckSize').textContent = `${deckSize.toFixed(2)} square meters`;
 
+    // Provide a verbal summary
+    const deckSummary = `The deck is ${width.toFixed(2)} meters wide and ${length.toFixed(2)} meters long.`;
+    document.getElementById('deckSummary').textContent = deckSummary;
+
     // Visualize the deck structure
     visualizeDeck(width, length);
 }
@@ -24,8 +28,9 @@ function visualizeDeck(width, length) {
     // Clear previous drawings
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
+    const padding = 20;
+    const canvasWidth = canvas.width - padding * 2;
+    const canvasHeight = canvas.height - padding * 2;
 
     // Calculate scale factors to fit the deck dimensions within the canvas
     const scaleWidth = canvasWidth / width;
@@ -38,7 +43,7 @@ function visualizeDeck(width, length) {
 
     // Draw the deck rectangle
     context.strokeStyle = '#000';
-    context.strokeRect((canvasWidth - scaledWidth) / 2, (canvasHeight - scaledLength) / 2, scaledWidth, scaledLength);
+    context.strokeRect(padding, padding, scaledWidth, scaledLength);
 
     // Draw the framing structure
     const joistSpacing = 0.5; // Joist spacing in meters (typical standard)
@@ -49,16 +54,16 @@ function visualizeDeck(width, length) {
     // Draw joists
     for (let i = 0; i <= width; i += joistSpacing) {
         context.beginPath();
-        context.moveTo((canvasWidth - scaledWidth) / 2 + i * scale, (canvasHeight - scaledLength) / 2);
-        context.lineTo((canvasWidth - scaledWidth) / 2 + i * scale, (canvasHeight - scaledLength) / 2 + scaledLength);
+        context.moveTo(padding + i * scale, padding);
+        context.lineTo(padding + i * scale, padding + scaledLength);
         context.stroke();
     }
 
     // Draw beams
     for (let i = 0; i <= length; i += beamSpacing) {
         context.beginPath();
-        context.moveTo((canvasWidth - scaledWidth) / 2, (canvasHeight - scaledLength) / 2 + i * scale);
-        context.lineTo((canvasWidth - scaledWidth) / 2 + scaledWidth, (canvasHeight - scaledLength) / 2 + i * scale);
+        context.moveTo(padding, padding + i * scale);
+        context.lineTo(padding + scaledWidth, padding + i * scale);
         context.stroke();
     }
 }
