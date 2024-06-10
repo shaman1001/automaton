@@ -1,0 +1,29 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+label, input {
+    display: block;
+    margin: 10px
+}
+
+button {
+    margin: 20px 0;
+}
+
+#output {
+    margin-top: 20px;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin-top: 20px;
+}
