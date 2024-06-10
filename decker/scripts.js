@@ -17,8 +17,46 @@ function calculateDeck() {
     const deckSummary = `The deck is ${width.toFixed(2)} meters wide and ${length.toFixed(2)} meters long.`;
     document.getElementById('deckSummary').textContent = deckSummary;
 
+    // Calculate and provide the frame structure description
+    const frameDescription = calculateFrameStructure(width, length);
+    document.getElementById('frameStructure').textContent = frameDescription;
+
     // Visualize the deck structure
     visualizeDeck(width, length);
+}
+
+function calculateFrameStructure(width, length) {
+    // Standard spacing for joists and beams
+    const joistSpacing = 0.5; // meters
+    const beamSpacing = 2.0; // meters
+
+    // Calculate number of joists and beams
+    const numJoists = Math.ceil(width / joistSpacing) + 1;
+    const numBeams = Math.ceil(length / beamSpacing) + 1;
+
+    // Calculate positions of joists and beams
+    const joistPositions = Array.from({ length: numJoists }, (_, i) => (i * joistSpacing).toFixed(2));
+    const beamPositions = Array.from({ length: numBeams }, (_, i) => (i * beamSpacing).toFixed(2));
+
+    // Calculate number and positions of support posts
+    const supportPostSpacing = 2.0; // meters
+    const numPostsWidth = Math.ceil(width / supportPostSpacing) + 1;
+    const numPostsLength = Math.ceil(length / supportPostSpacing) + 1;
+    const postPositions = [];
+
+    for (let i = 0; i < numPostsLength; i++) {
+        for (let j = 0; j < numPostsWidth; j++) {
+            postPositions.push([i * supportPostSpacing, j * supportPostSpacing]);
+        }
+    }
+
+    // Create frame structure description
+    let frameDescription = `The frame consists of ${numJoists} joists spaced ${joistSpacing} meters apart, `;
+    frameDescription += `and ${numBeams} beams spaced ${beamSpacing} meters apart. `;
+    frameDescription += `There are ${numPostsWidth * numPostsLength} support posts placed at the following positions (in meters): `;
+    frameDescription += postPositions.map(pos => `(${pos[0].toFixed(2)}, ${pos[1].toFixed(2)})`).join(', ') + '.';
+
+    return frameDescription;
 }
 
 function visualizeDeck(width, length) {
@@ -65,5 +103,22 @@ function visualizeDeck(width, length) {
         context.moveTo(padding, padding + i * scale);
         context.lineTo(padding + scaledWidth, padding + i * scale);
         context.stroke();
+    }
+
+    // Draw support posts
+    const supportPostSpacing = 2.0; // meters
+    const numPostsWidth = Math.ceil(width / supportPostSpacing) + 1;
+    const numPostsLength = Math.ceil(length / supportPostSpacing) + 1;
+
+    context.fillStyle = '#f00';
+
+    for (let i = 0; i < numPostsLength; i++) {
+        for (let j = 0; j < numPostsWidth; j++) {
+            context.beginPath();
+            const x = padding + j * supportPostSpacing * scale;
+            const y = padding + i * supportPostSpacing * scale;
+            context.arc(x, y, 5, 0, 2 * Math.PI);
+            context.fill();
+        }
     }
 }
